@@ -1,0 +1,32 @@
+task hello {
+    doFirst {
+        println 'doFirst'
+    }
+
+
+    doLast {
+        println 'Hello world!'
+        println 'My name is yohhatu'
+    }
+}
+
+task hello2 << {
+    println 'Good morning!!'
+}
+
+task upper << {
+    String someString = 'mY_nAmE'
+    println "Original:" + someString
+    println "Upper Case:" + someString.toUpperCase()
+}
+
+task count << {
+    4.times { print "$it " }
+}
+
+task hello3 << {
+    println "hello3"
+}
+task intro(dependsOn: hello3) << {
+    println "This is dependsOn Task"
+}
