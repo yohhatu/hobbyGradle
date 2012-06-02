@@ -24,9 +24,11 @@ task count << {
     4.times { print "$it " }
 }
 
-task hello3 << {
-    println "hello3"
-}
-task intro(dependsOn: hello3) << {
+task intro(dependsOn: 'hello3') << {
     println "This is dependsOn Task"
+}
+
+task hello3 << {
+
+    println "hello3"
 }
