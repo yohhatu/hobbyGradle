@@ -32,3 +32,9 @@ task hello3 << {
 
     println "hello3"
 }
+
+4.times { counter ->
+    task "task$counter" << {
+        println "Task number $counter"
+    }
+}
