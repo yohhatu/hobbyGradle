@@ -64,3 +64,11 @@ task hello5 << {
 hello5.doLast {
     println "The $hello5.name task"
 }
+
+task myTask {
+    ext.myProperty = "myValue!!"
+}
+
+task printTaskProperty {
+    println myTask.myProperty
+}
