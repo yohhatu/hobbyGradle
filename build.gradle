@@ -56,3 +56,11 @@ hello4.doLast {
 hello4 << {
     println 'Hello4 Jupiter'
 }
+
+task hello5 << {
+    println 'Hello world!'
+}
+
+hello5.doLast {
+    println "The $hello5.name task"
+}
