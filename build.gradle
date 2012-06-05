@@ -38,3 +38,5 @@ task hello3 << {
         println "Task number $counter"
     }
 }
+
+task0.dependsOn task2, task3
