@@ -32,3 +32,59 @@ task hello3 << {
 
     println "hello3"
 }
+
+4.times { counter ->
+    task "task$counter" << {
+        println "Task number $counter"
+    }
+}
+
+task0.dependsOn task2, task3
+
+task hello4 << {
+    println 'Hello4 Earth'
+}
+
+hello4.doFirst {
+    println 'Hello4 Venus'
+}
+
+hello4.doLast {
+    println 'Hello4 Mars'
+}
+
+hello4 << {
+    println 'Hello4 Jupiter'
+}
+
+task hello5 << {
+    println 'Hello world!'
+}
+
+hello5.doLast {
+    println "The $hello5.name task"
+}
+
+task myTask {
+    ext.myProperty = "myValue!!"
+}
+
+task printTaskProperty {
+    println myTask.myProperty
+}
+
+task distribution << {
+    println "We build the zip with version=$version"
+}
+
+task release(dependsOn: 'distribution') << {
+    println 'We release now'
+}
+
+gradle.taskGraph.whenReady {taskGraph ->
+    if ( taskGraph.hasTask(release)) {
+        version = '1.0'
+    } else {
+        version = '1.0-SNAPSHOT'
+    }
+}
